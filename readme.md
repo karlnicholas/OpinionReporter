@@ -15,8 +15,10 @@ A Spring MVC application to read and analyze newly published California Appellat
   * Data Access & Object Relational Mapping & Transaction Management.
 
 #### The project is organized into several submodules
+  * op - main application with web pages, controllers, services, repositories, etc. 
+  * opinions submodule - database and application model for court opinions.
   * codesparser - multi-node linked list for holding statute hierarchy.
   * gsearch - code to search and manage statute hierarchy.
-  * gscalifornia - California specific search functions for loading and converting.
-  * opinions - database and application model for court opinions.
+  * gscalifornia submodule - California specific search functions for loading and converting statutes.
   * opcalifornia - California specific opinion scraper code.  
+  
