@@ -1,0 +1,46 @@
+op
+---------------------------------
+
+PostgreSQL 9.2 database added.  Please make note of these credentials:
+
+   Root User: adminxmivqzt
+   Root Password: eHYkzt11wFEh
+   Database Name: op
+
+Connection URL: postgresql://$OPENSHIFT_POSTGRESQL_DB_HOST:$OPENSHIFT_POSTGRESQL_DB_PORT
+
+
+575c6d162d5271c24c000064@op-cacode.rhcloud.com
+
+ssh://575c6d162d5271c24c000064@op-cacode.rhcloud.com/~/git/op.git/
+
+575c6d162d5271c24c000064
+
+plink -C -v -l 575c6d162d5271c24c000064 -L 5432:127.4.89.2:5432 op-cacode.rhcloud.com
+
+SELECT pg_terminate_backend(pg_stat_activity.pid)
+FROM pg_stat_activity
+WHERE pg_stat_activity.datname = 'op'
+  AND pid <> pg_backend_pid();
+
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName" value="${jdbc.driver}" />
+	<property name="url" value="jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/${OPENSHIFT_APP_NAME}" />
+	<property name="username" value="${OPENSHIFT_MYSQL_DB_USERNAME}" />
+	<property name="password" value="${OPENSHIFT_MYSQL_DB_PASSWORD}" />
+</bean>
+
+
+OPENSHIFT_POSTGRESQL_DB_HOST=127.4.89.2
+OPENSHIFT_POSTGRESQL_DB_LOG_DIR=/var/lib/openshift/575c6d162d5271c24c000064/app-root/logs/
+OPENSHIFT_POSTGRESQL_DB_PASSWORD=P79Z7WItQ2aH
+OPENSHIFT_POSTGRESQL_DB_PID=/var/lib/openshift/575c6d162d5271c24c000064/postgresql/pid/postgres.pid
+OPENSHIFT_POSTGRESQL_DB_PORT=5432
+OPENSHIFT_POSTGRESQL_DB_SOCKET=/var/lib/openshift/575c6d162d5271c24c000064/postgresql/socket/
+OPENSHIFT_POSTGRESQL_DB_URL=postgresql://adminwg1gkjx:P79Z7WItQ2aH@127.4.89.2:5432
+OPENSHIFT_POSTGRESQL_DB_USERNAME=adminwg1gkjx
+OPENSHIFT_POSTGRESQL_DIR=/var/lib/openshift/575c6d162d5271c24c000064/postgresql/
+OPENSHIFT_POSTGRESQL_IDENT=redhat:postgresql:9.2:0.3.19
+OPENSHIFT_POSTGRESQL_LD_LIBRARY_PATH_ELEMENT=/opt/rh/postgresql92/root/usr/lib64
+OPENSHIFT_POSTGRESQL_PATH_ELEMENT=/opt/rh/postgresql92/root/usr/bin
+OPENSHIFT_POSTGRESQL_VERSION=9.2

@@ -1,0 +1,8 @@
+/target/
+.settings
+.classpath
+.project
+/cases/
+/html/
+/xml/
+/bin/

@@ -1,0 +1,23 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:remove="all">Template for verify email</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p>Dear <span th:text="${viewInfo.account.email}" ></span>,</p> 
+<th:block th:if="${cases != null}" th:fragment="cases">
+<p>Based on your profile, the following court cases published this week might be of interest to you.</p>
+<p>To see the case details, login to your account at <a href="#" th:href="@{http://op-cacode.rhcloud.com/useropinions(sd=${#dates.format(viewInfo.sd,'yyyy-MM-dd')},ed=${#dates.format(viewInfo.ed,'yyyy-MM-dd')})}">Court Opinions</a>.</p>
+<table style="text-align: center">
+<tbody>
+<tr><th>Date</th><th>Title</th><th>Name</th></tr>
+<tr th:each="case: *{cases}" >
+  <td th:text="*{#dates.format(case.publishDate,'MMM dd')}"></td>
+  <td th:text="*{case.title}"></td>
+  <td th:text="*{case.name}"></td>
+</tr>
+</tbody>
+</table>
+</th:block>
+</body>
+</html>

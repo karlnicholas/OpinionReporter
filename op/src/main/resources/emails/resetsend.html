@@ -1,0 +1,17 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:remove="all">Template for verify email</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+  <p th:text="#{verify.greeting(${account.email})}">
+    Hello, Peter Static,
+  </p>
+  <p>Please click on the following link to verify your email address. If you did not request a password reset, please ignore this email and/or contact Court Opinions through our website.</p>
+  <h4><a href="#" th:href="@{http://op-cacode.rhcloud.com/resetpassword(email=${account.email},key=${account.verifyKey})}">Reset Email</a></h4>
+  <p>
+    Regards, <br /><br />
+    Court Opinions.
+  </p>
+</body>
+</html>

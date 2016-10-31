@@ -1,0 +1,9 @@
+/target
+
+/bin
+
+/eclipselogging.properties
+
+/.settings
+/.classpath
+/.project

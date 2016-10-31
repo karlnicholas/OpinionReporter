@@ -1,0 +1,27 @@
+After soft reset and re commit if any needed
+git gc --aggressive --prune=now
+git push --force origin master
+
+??git filter-branch --index-filter 'git rm --cached --ignore-unmatch /src/main/resources/xmlcodes/*
+
+
+1. git filter-branch --index-filter 'git rm --cached --ignore-unmatch <FILE NAME>'  Removes the file from all revisions.
+◦ex.  git filter-branch --index-filter 'git rm --cached --ignore-unmatch **/subdirectory/*'  All subdirectories that appears in multiple directories
+◦ex.  git filter-branch --index-filter 'git rm --cached --ignore-unmatch /subdirectory/*.jpg'  All jpg files in this subdirectory.
+◦ex.  git filter-branch --index-filter 'git rm --cached --ignore-unmatch /subdirectory/*'  All files in this subdirectory and consequently this subdirectory because git doesn't support empty directories.
+◦ex.  git filter-branch --index-filter 'git rm --cached --ignore-unmatch subdirectory/**/subdirectory2/*'  All subdirectory2 which are contained within the subdirectory
+
+
+2. rm -rf .git/refs/original/  Remove git's backup.
+
+3.  git reflog expire --expire=now --all  Expires all the loose objects.
+4.  git fsck --full --unreachable  Checks if there are any loose objects.
+5.  git repack -A -d  Repacks the pack.
+6.  git gc --aggressive --prune=now  Finally removes those objects.
+7.  git push --force [remote] master  You will need to do a force push, because the remote will sort of think you went back in time, so just make sure you've pulled before you started all of this. 
+
+
+*****
+To remove all dangling commits and those reachable from the reflogs do this:
+git reflog expire --expire-unreachable=now --all
+git gc --prune=now
