@@ -35,8 +35,6 @@ public class ProfileController {
     private CodeInterfacesService codeInterfaces;
 	@Autowired
 	private VerifyEmailService verifyEmailService;
-	@Autowired
-	private UpdateEmailService updateEmailService;
     
 //    private CodeTitles[] codeTitles;
     List<List<CodeTitles>> titleMatrix;

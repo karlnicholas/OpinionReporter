@@ -2,12 +2,8 @@ package op.controllers;
 
 import javax.validation.Valid;
 
-import op.model.Account;
-import op.repositories.AccountRepository;
 import op.services.AboutSendService;
-import op.services.ResetSendService;
 import op.web.forms.AboutForm;
-import op.web.forms.ResetSendForm;
 import op.web.support.MessageHelper;
 import op.web.viewmodel.ViewModelBuilder;
 

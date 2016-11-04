@@ -111,41 +111,7 @@ public class CACaseParser implements CaseParserInterface {
 		}
 		return parserDocument;
 	}
-
-	private ByteArrayInputStream convertInputStream(InputStream inputStream) {
-		ByteArrayInputStream bais = null;
-        try ( ByteArrayOutputStream outputStream = new ByteArrayOutputStream() ) {
-	    	byte[] bbuf = new byte[8192];
-	    	int len;
-	    	while ( (len = inputStream.read(bbuf, 0, bbuf.length)) != -1 ) {
-	    		outputStream.write(bbuf, 0, len);
-	    	}
-	    	outputStream.close();
-	    	bais = new ByteArrayInputStream(outputStream.toByteArray());
-        } catch (IOException ex) {
-	    	logger.log(Level.SEVERE, null, ex);
-		}
-        return bais; 
-	}
 	
-	private void saveCopyOfCase(String directory, String fileName, InputStream inputStream ) {
-		try {
-			BufferedOutputStream out = new BufferedOutputStream( new FileOutputStream(directory + "/" + fileName));	    
-		    ByteArrayOutputStream baos = new ByteArrayOutputStream(); 
-	    	byte[] bytes = new byte[8192];
-	    	int len;
-	    	while ( (len = inputStream.read(bytes, 0, bytes.length)) != -1 ) {
-	    		out.write(bytes, 0, len);
-	    		baos.write(bytes, 0, len);
-	    	}
-	    	out.close();
-	    	baos.close();
-	    	inputStream.close();
-	    } catch( IOException ex) {
-	    	logger.log(Level.SEVERE, null, ex);
-	    }
-	}
-
 	@Override
 	public List<CourtCase> parseCaseList(Reader reader) throws Exception {
 		List<String> lines = new ArrayList<String>();

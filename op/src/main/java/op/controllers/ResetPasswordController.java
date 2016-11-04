@@ -5,7 +5,6 @@ import javax.validation.Valid;
 import op.model.Account;
 import op.repositories.AccountRepository;
 import op.web.forms.ResetPasswordForm;
-import op.web.forms.ResetSendForm;
 import op.web.support.MessageHelper;
 import op.web.viewmodel.ViewModelBuilder;
 

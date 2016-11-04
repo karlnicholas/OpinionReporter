@@ -5,7 +5,7 @@
 	<artifactId>opinions</artifactId>
 	<version>0.2.0</version>
 	<packaging>jar</packaging>
-	<name>opinionparser</name>
+	<name>opinions</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
