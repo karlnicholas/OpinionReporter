@@ -8,8 +8,8 @@
   <version>1.0</version>
   <name>Court Opinions Parent Project</name>
   <modules>
-    <module>codesparser</module>
-    <module>gscalifornia</module>
+    
+    
     <module>opcalifornia</module>
     <module>opinions</module>
     <module>op</module>
