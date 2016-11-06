@@ -31,7 +31,7 @@ public class CodeInterfacesService {
 			ResourceBundle rb = ResourceBundle.getBundle(interfaces);
 			String iface = rb.getString(codesinterfaceKey);
 			codesInterface = (CodesInterface) Class.forName(iface).newInstance();
-			codesInterface.loadXMLCodes(new File(CodeInterfacesService.class.getResource("/xmlcodes").getFile()));
+			codesInterface.loadCodes();
 			iface = rb.getString(caseparserinterfaceKey);
 			caseParserInterface = (CaseParserInterface) Class.forName(iface).newInstance();
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
