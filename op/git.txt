@@ -1,4 +1,4 @@
-After soft reset and re commit if any needed
+﻿After soft reset and re commit if any needed
 git gc --aggressive --prune=now
 git push --force origin master
 
@@ -18,7 +18,7 @@ git push --force origin master
 4.  git fsck --full --unreachable  Checks if there are any loose objects.
 5.  git repack -A -d  Repacks the pack.
 6.  git gc --aggressive --prune=now  Finally removes those objects.
-7.  git push --force [remote] master  You will need to do a force push, because the remote will sort of think you went back in time, so just make sure you've pulled before you started all of this. 
+7.  git push --force origin master  You will need to do a force push, because the remote will sort of think you went back in time, so just make sure you've pulled before you started all of this. 
 
 
 *****
