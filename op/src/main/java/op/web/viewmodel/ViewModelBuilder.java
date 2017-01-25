@@ -101,6 +101,7 @@ public class ViewModelBuilder implements Observer {
 		firstDay.clear(Calendar.SECOND);
 		firstDay.clear(Calendar.MILLISECOND);
 		firstDay.set(Calendar.DAY_OF_WEEK, firstDay.getFirstDayOfWeek());
+		firstDay.getTime();		// force recomputation. 
 
 		// get today and clear time of day
 		lastDay.set(Calendar.HOUR_OF_DAY, 0); // ! clear would not reset the hour of day !

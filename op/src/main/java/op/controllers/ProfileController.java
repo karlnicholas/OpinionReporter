@@ -10,7 +10,6 @@ import javax.annotation.PostConstruct;
 import op.model.Account;
 import op.repositories.AccountRepository;
 import op.services.CodeInterfacesService;
-import op.services.UpdateEmailService;
 import op.services.VerifyEmailService;
 import op.web.support.Message;
 import op.web.viewmodel.ViewModelBuilder;
