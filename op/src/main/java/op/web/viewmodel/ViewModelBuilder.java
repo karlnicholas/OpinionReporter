@@ -67,6 +67,7 @@ public class ViewModelBuilder implements Observer {
 				firstDay.setTime(date);
 				lastDay.setTime(date);
 				bracketWeek(firstDay, lastDay);
+				addToCurrentDates(date, currentDates);
 			}
 		}
 		if ( currentDates[0] != null ) reportDates.add(currentDates);
