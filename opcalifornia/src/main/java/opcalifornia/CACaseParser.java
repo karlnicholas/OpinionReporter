@@ -155,7 +155,9 @@ public class CACaseParser implements CaseParserInterface {
 				// System.out.println(temp);
 				// such as date of opinion .. found by regex
 				// also the title of the case .. now stored in tempa[0]
-				String[] tempa = temp.split("\\b\\d{1,2}[/]\\d{1,2}[/]\\d{2}");
+//				String[] tempa = temp.split("\\b\\d{1,2}[/]\\d{1,2}[/]\\d{2}");
+				String[] tempa = temp.split("\\b.{1,2}[/].{1,2}[/].{2}");
+
 				String opinionDate = null;
 				String court = null;
 				if (tempa.length == 2) {
@@ -163,6 +165,12 @@ public class CACaseParser implements CaseParserInterface {
 					opinionDate = temp.substring(tempa[0].length(),temp.length() - tempa[1].length());
 					// and the court designation
 					court = tempa[1].trim();
+					if ( court.toLowerCase().contains("&nbsp;") ) {
+						court = court.substring(0, court.toLowerCase().indexOf("&nbsp;")).trim();
+					}
+					if ( court.toLowerCase().contains("</td>") ) {
+						court = court.substring(0, court.toLowerCase().indexOf("</td>")).trim();
+					}
 				} else {
 					// sometimes no court designation
 					opinionDate = temp.substring(tempa[0].length());

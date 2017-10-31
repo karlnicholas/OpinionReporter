@@ -3,21 +3,21 @@ package op.repositories;
 import java.util.List;
 
 import javax.persistence.*;
-import javax.inject.Inject;
 
 import op.model.Account;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class AccountRepository {
 	
 	@PersistenceContext
 	private EntityManager em;
-	
-	@Inject
+
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
 	@Transactional

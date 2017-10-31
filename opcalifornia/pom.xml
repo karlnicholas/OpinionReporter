@@ -3,45 +3,27 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>opcalifornia</groupId>
 	<artifactId>opcalifornia</artifactId>
-	<version>0.0.1</version>
-	<repositories>
-		<repository>
-			<id>eap</id>
-			<url>http://maven.repository.redhat.com/techpreview/all</url>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>eap</id>
-			<url>http://maven.repository.redhat.com/techpreview/all</url>
-		</pluginRepository>
-	</pluginRepositories>
+	<version>0.3.0</version>
+	<parent>
+		<groupId>OpinionReporter</groupId>
+		<artifactId>simple-parent</artifactId>
+		<version>1.1</version>
+	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
-		<version.org.jboss.bom>6.2.4.GA</version.org.jboss.bom>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.jboss.bom</groupId>
-				<artifactId>eap6-supported-artifacts</artifactId>
-				<version>${version.org.jboss.bom}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
+			<version>4.5.3</version>
 		</dependency>
 		<dependency>
 			<groupId>opinions</groupId>
 			<artifactId>opinions</artifactId>
-			<version>0.2.0</version>
+			<version>0.3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>

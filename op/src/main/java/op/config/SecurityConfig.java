@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import op.services.UserService;
 
 import org.springframework.context.annotation.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
@@ -28,7 +28,7 @@ class SecurityConfig {
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return new StandardPasswordEncoder();
+		return new BCryptPasswordEncoder();
 	}
 
   @Profile("test")
