@@ -57,7 +57,7 @@ class ApplicationConfig {
     public ClassLoaderTemplateResolver classLoaderTemplateResolver() {
     	ClassLoaderTemplateResolver classLoaderTemplateResolver = new ClassLoaderTemplateResolver();
     	classLoaderTemplateResolver.setPrefix(MAIL);
-    	classLoaderTemplateResolver.setTemplateMode("HTML5");
+    	classLoaderTemplateResolver.setTemplateMode("HTML");
     	classLoaderTemplateResolver.setCharacterEncoding("UTF-8");
     	return classLoaderTemplateResolver; 
     }

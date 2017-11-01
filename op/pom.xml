@@ -19,9 +19,6 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<org.aspectj-version>1.7.4</org.aspectj-version>
 		<org.slf4j-version>1.7.5</org.slf4j-version>
-		<ch.qos.logback-version>1.0.13</ch.qos.logback-version>
-		<org.thymeleaf-version>2.1.2.RELEASE</org.thymeleaf-version>
-		<org.thymeleaf.extras.springsecurity3-version>2.1.1.RELEASE</org.thymeleaf.extras.springsecurity3-version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -143,10 +140,10 @@
 			<artifactId>aspectjrt</artifactId>
 		</dependency>
 		<!-- Logging -->
-		<!-- @Inject -->
 		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
+		    <groupId>ch.qos.logback</groupId>
+		    <artifactId>logback-classic</artifactId>
+		    <version>1.2.3</version>
 		</dependency>
 		<!-- Servlet -->
 		<dependency>
@@ -247,4 +244,7 @@
 			<version>3.15</version>
 		</dependency>
 	</dependencies>
+  <build>
+    <finalName>/</finalName>
+  </build>
 </project>
