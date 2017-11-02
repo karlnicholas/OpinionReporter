@@ -1,6 +1,7 @@
 package op.config;
 
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -9,6 +10,7 @@ import javax.sql.DataSource;
 
 import op.Application;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +27,7 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackageClasses = Application.class)
 class JpaConfig implements TransactionManagementConfigurer {
-//	private static final Logger log = Logger.getLogger(JpaConfig.class.getName());
+	private static final Logger log = Logger.getLogger(JpaConfig.class.getName());
 
     @Value("${dataSource.driverClassName}")
     private String driver;
@@ -39,12 +41,11 @@ class JpaConfig implements TransactionManagementConfigurer {
     private String dialect;
     @Value("${hibernate.hbm2ddl.auto}")
     private String hbm2ddlAuto;
-
+/*
     @Bean
     public DataSource configureDataSource() {
 
         DataSource dataSource;
-/*        
         String openshift = System.getenv("OPENSHIFT_APP_NAME");
         if ( openshift != null ) {
 			try {
@@ -61,7 +62,6 @@ class JpaConfig implements TransactionManagementConfigurer {
 		    ((DriverManagerDataSource)dataSource).setUsername(username);
 		    ((DriverManagerDataSource)dataSource).setPassword(password);
         }
-*/
 	    dataSource = new DriverManagerDataSource();
 	    ((DriverManagerDataSource)dataSource).setDriverClassName(driver);
 	    ((DriverManagerDataSource)dataSource).setUrl(url);
@@ -70,7 +70,36 @@ class JpaConfig implements TransactionManagementConfigurer {
 
 	    return dataSource;
     }
+*/
 
+    @Bean
+    public DataSource configureDataSource() {
+	    DriverManagerDataSource dataSource = new DriverManagerDataSource();
+	    dataSource.setDriverClassName(driver);
+	    
+	    String finalUrl = "jdbc:postgresql://";
+	
+	    String dbUrl = System.getenv("POSTGRESQL_SERVICE_HOST");
+	    if ( dbUrl == null ) finalUrl += "localhost:5432/";
+	    else finalUrl += dbUrl + ":5432/" ;
+	
+	    dbUrl = System.getenv("POSTGRESQL_DATABASE_NAME");
+	    if ( dbUrl == null ) finalUrl += "op";
+	    else finalUrl += dbUrl;
+	
+	    log.info("finalUrl: " + finalUrl);
+	    dataSource.setUrl(finalUrl);
+	    String dbUsername = System.getenv("POSTGRESQL_DATABASE_USER");
+	    if ( dbUsername == null ) dbUsername = username;
+	    log.info("dbUsername: " + dbUsername);
+	    dataSource.setUsername(dbUsername);
+	    String dbPassword = System.getenv("POSTGRESQL_DATABASE_PASSWORD");        
+	    if ( dbPassword == null ) dbPassword = password;
+	    log.info("dbPassword: " + dbPassword);
+	    dataSource.setPassword(dbPassword);
+	    return dataSource;
+    }
+	
     @Bean
     public LocalContainerEntityManagerFactoryBean configureEntityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
