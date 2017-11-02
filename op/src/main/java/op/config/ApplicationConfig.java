@@ -37,7 +37,7 @@ class ApplicationConfig {
     @Bean
 	public static PropertyPlaceholderConfigurer propertyPlaceholderConfigurer() {
 		PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
-        String openshift = System.getenv("OPENSHIFT_APP_NAME");
+        String openshift = System.getenv("OPENSHIFT_BUILD_NAMESPACE");
         if ( openshift != null ) {
 			ppc.setLocation(new ClassPathResource("/application.properties"));
         } else {
