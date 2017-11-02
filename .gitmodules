@@ -1,0 +1,3 @@
+[submodule "SupportLibraries"]
+	path = SupportLibraries
+	url = https://github.com/karlnicholas/SupportLibraries.git
