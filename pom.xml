@@ -15,6 +15,7 @@
 		
 		<module>SupportLibraries/codesparser</module>
 		<module>SupportLibraries/gscalifornia</module>
+		<module>SupportLibraries/gsearch</module>
 	</modules>
 	<repositories>
 		<repository>
