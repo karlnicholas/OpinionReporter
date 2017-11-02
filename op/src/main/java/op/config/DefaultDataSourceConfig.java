@@ -9,6 +9,22 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 
+/**
+ * POSTGRESQL_DATABASE_NAME=xxx
+ * POSTGRESQL_DATABASE_PASSWORD=xxx
+ * POSTGRESQL_DATABASE_USER=xxx
+ * POSTGRESQL_PORT=tcp://xxx.xxx.xxx.xxx:5432
+ * POSTGRESQL_PORT_5432_TCP=tcp://xxx.xxx.xxx.xxx:5432
+ * POSTGRESQL_PORT_5432_TCP_ADDR=xxx.xxx.xxx.xxx
+ * POSTGRESQL_PORT_5432_TCP_PORT=5432
+ * POSTGRESQL_PORT_5432_TCP_PROTO=tcp
+ * POSTGRESQL_SERVICE_HOST=xxx.xxx.xxx.xxx
+ * POSTGRESQL_SERVICE_PORT=5432
+ * POSTGRESQL_SERVICE_PORT_POSTGRESQL=5432
+ * 
+ * @author karln
+ *
+ */
 @Configuration
 @Profile("default")
 class DefaultDataSourceConfig implements DataSourceConfig {
@@ -28,15 +44,24 @@ class DefaultDataSourceConfig implements DataSourceConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(driver);
-        String dbUrl = System.getenv("OPENSHIFT_POSTGRESQL_DB_URL");
-        if ( dbUrl == null ) dbUrl = url;
-        log.info("dbUrl: " + dbUrl);
-        dataSource.setUrl(dbUrl);
-        String dbUsername = System.getenv("OPENSHIFT_POSTGRESQL_DB_USERNAME");
+        
+        String finalUrl = "jdbc:postgresql://";
+
+        String dbUrl = System.getenv("POSTGRESQL_SERVICE_HOST");
+        if ( dbUrl == null ) finalUrl += "localhost:5432/";
+        else finalUrl += dbUrl + ":5432/" ;
+
+        dbUrl = System.getenv("POSTGRESQL_DATABASE_NAME");
+        if ( dbUrl == null ) finalUrl += "op";
+        else finalUrl += dbUrl;
+
+        log.info("finalUrl: " + finalUrl);
+        dataSource.setUrl(finalUrl);
+        String dbUsername = System.getenv("POSTGRESQL_DATABASE_USER");
         if ( dbUsername == null ) dbUsername = username;
         log.info("dbUsername: " + dbUsername);
         dataSource.setUsername(dbUsername);
-        String dbPassword = System.getenv("OPENSHIFT_POSTGRESQL_DB_PASSWORD");        
+        String dbPassword = System.getenv("POSTGRESQL_DATABASE_PASSWORD");        
         if ( dbPassword == null ) dbPassword = password;
         log.info("dbPassword: " + dbPassword);
         dataSource.setPassword(dbPassword);

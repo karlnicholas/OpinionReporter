@@ -44,6 +44,7 @@ class JpaConfig implements TransactionManagementConfigurer {
     public DataSource configureDataSource() {
 
         DataSource dataSource;
+/*        
         String openshift = System.getenv("OPENSHIFT_APP_NAME");
         if ( openshift != null ) {
 			try {
@@ -60,8 +61,14 @@ class JpaConfig implements TransactionManagementConfigurer {
 		    ((DriverManagerDataSource)dataSource).setUsername(username);
 		    ((DriverManagerDataSource)dataSource).setPassword(password);
         }
+*/
+	    dataSource = new DriverManagerDataSource();
+	    ((DriverManagerDataSource)dataSource).setDriverClassName(driver);
+	    ((DriverManagerDataSource)dataSource).setUrl(url);
+	    ((DriverManagerDataSource)dataSource).setUsername(username);
+	    ((DriverManagerDataSource)dataSource).setPassword(password);
 
-        return dataSource;
+	    return dataSource;
     }
 
     @Bean
