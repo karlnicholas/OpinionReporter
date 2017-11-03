@@ -11,8 +11,6 @@
 		<module>opcalifornia</module>
 		<module>opinions</module>
 		<module>op</module>
-		
-		
 		<module>SupportLibraries/codesparser</module>
 		<module>SupportLibraries/gscalifornia</module>
 		<module>SupportLibraries/gsearch</module>
