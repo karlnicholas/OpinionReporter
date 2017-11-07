@@ -81,7 +81,7 @@ public class UpdateEmailService {
 		String htmlContent = mailTemplateEngine.process("updates.html", ctx);
 		
 		sendEmail.sendEmail(
-			"no-reply@op-cacode.rhcloud.com", 
+			"no-reply@op-op.b9ad.pro-us-east-1.openshiftapps.com", 
 			viewInfo.account.getEmail(), 
 			"Court Opinions - Weekly Report", 
 			htmlContent

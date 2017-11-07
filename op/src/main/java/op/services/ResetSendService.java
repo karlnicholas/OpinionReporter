@@ -30,7 +30,7 @@ public class ResetSendService {
 		ctx.setVariable("account", account);
 		String htmlContent = mailTemplateEngine.process("resetsend.html", ctx);
 		RESPONSES response = sendEmail.sendEmail(
-			"no-reply@op-cacode.rhcloud.com",
+			"no-reply@op-op.b9ad.pro-us-east-1.openshiftapps.com",
 			account.getEmail(), 
 			"Court Opinions - Reset Password",
 			htmlContent

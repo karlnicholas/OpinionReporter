@@ -31,7 +31,7 @@ public class AboutSendService {
 		ctx.setVariable("about", aboutForm);
 		String htmlContent = mailTemplateEngine.process("about.html", ctx);
 		RESPONSES response = sendEmail.sendEmail(
-			"no-reply@op-cacode.rhcloud.com",
+			"no-reply@op-op.b9ad.pro-us-east-1.openshiftapps.com",
 			"karl.nicholas@outlook.com", 
 			"Court Opinions - Feedback",
 			htmlContent
