@@ -25,7 +25,7 @@ body { padding-top: 50px; }
 <th:block th:test="${not *{sections.isEmpty()}}" th:fragment="sections">
 <tr th:each="section: *{sections}" >
   <td bgcolor="#FFFF7F" style="width: 75px" align="center"><span th:text="*{section.refCount}"></span></td>
-  <td bgcolor="#FFFF7F" style="width: 150px"><a href="#" th:href="@{http://gs-cacode.rhcloud.com(path=${@pathUtil.toString(section.codeReference.fullFacet)})}"><span th:text="*{section.displaySectionNumber}" ></span></a></td>
+  <td bgcolor="#FFFF7F" style="width: 150px"><a href="#" th:href="@{http://gs-op.b9ad.pro-us-east-1.openshiftapps.com/(path=${@pathUtil.toString(section.codeReference.fullFacet)})}"><span th:text="*{section.displaySectionNumber}" ></span></a></td>
   <td bgcolor="#FFCCFF">&#160;&#160;&#160;&#160;<span th:text="*{section.codeReference.title}" ></span></td>
 </tr>
 </th:block>
